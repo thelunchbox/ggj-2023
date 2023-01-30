@@ -1,0 +1,33 @@
+{
+  "name": "electron-game-base",
+  "version": "1.0.0",
+  "description": "Base for setting up a game in electron",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "npm test"
+  },
+  "build": {
+    "appId": "game.electron",
+    "mac": {
+      "category": "sports.games"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "maintainer": ""
+    }
+  },
+  "devDependencies": {
+    "electron": "^3.0.13",
+    "electron-builder": "^22.8.1"
+  },
+  "author": {
+    "name": "Alex Merkert",
+    "email": "alex@buttonpunchgames.com",
+    "url": "http://buttonpunchgames.com/"
+  },
+  "license": "ISC"
+}
