@@ -28,6 +28,7 @@ class Game extends State {
 
   constructor() {
     super();
+    this.test = new Sprite('tree', './img/test_t.png', 20, 20, testAnimations);
   }
 
   update(dt, keys) {
@@ -48,8 +49,8 @@ class Game extends State {
       });
       nextPuddleIn = puddleCooldown;
     }
-    nextPuddleIn -= 1;
-    this.test = new Sprite('tree', './img/test_t.png', 20, 20, testAnimations);
+    nextPuddleIn -= 1;    
+    this.test.update();
     return super.update(dt, keys);
   }
 
