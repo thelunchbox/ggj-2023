@@ -1,0 +1,12 @@
+
+const GROUND_LINE = 80;
+const GROUND_DEPTH = 20;
+const MAX_PUDDLE_RADIUS = 50;
+const MAX_PUDDLE_COUNT = 30;
+
+module.exports = {
+  GROUND_LINE,
+  GROUND_DEPTH,
+  MAX_PUDDLE_RADIUS,
+  MAX_PUDDLE_COUNT,
+}
