@@ -5,7 +5,7 @@ const COLORS = require('../utils/colors');
 
 const GROUND_LINE = 70;
 const puddles = [];
-const MAX_PUDDLE_RADIUS = 100;
+const MAX_PUDDLE_RADIUS = 50;
 const MAX_PUDDLE_COUNT = 30;
 const puddleCooldown = 120;
 let nextPuddleIn = puddleCooldown;
@@ -26,9 +26,10 @@ class Game extends State {
     });
 
     if (nextPuddleIn === 0 && puddles.length < MAX_PUDDLE_COUNT) {
+      const yBuffer = GROUND_LINE + MAX_PUDDLE_RADIUS + 5;
       puddles.push({
         x: Math.floor(Math.random() * r.width),
-        y: Math.floor(Math.random() * (r.height - GROUND_LINE)) + GROUND_LINE,
+        y: Math.floor(Math.random() * (r.height - yBuffer)) + yBuffer,
         radius: Math.floor(Math.random() * 10) + 5,
       });
       nextPuddleIn = puddleCooldown;
