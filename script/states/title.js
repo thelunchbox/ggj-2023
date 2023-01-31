@@ -27,7 +27,7 @@ class Title extends State {
       textAlign: 'center',
       textBaseline: 'middle',
     }, () => {
-      r.strokeAndFillText('ROOTS', r.center.x, r.center.y);
+      r.strokeAndFillText('AHAHAHAHAHAHA!', r.center.x, r.center.y);
       r.isolatePath({ fontSize: 26 }, () => {
         r.oscillateText('Press Any Key', r.center.x, r.center.y + 200, this.frame, { drag: 3, padding: 3 });
       });

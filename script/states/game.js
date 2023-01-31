@@ -2,8 +2,22 @@ const State = require('../state');
 const STATES = require('../states');
 const { getRenderer } = require('../renderer');
 const COLORS = require('../utils/colors');
+const Sprite = require("../utils/sprite");
+
+const testAnimations = {
+  normal: {
+    frames: [
+      [0, 0, 35],
+      [0, 1, 15],
+      [0, 2, 20],
+      [0, 1, 25],
+    ],
+    next: 'normal',
+  },
+};
 
 const GROUND_LINE = 70;
+const GROUND_DEPTH = 20;
 const puddles = [];
 const MAX_PUDDLE_RADIUS = 50;
 const MAX_PUDDLE_COUNT = 30;
@@ -35,6 +49,7 @@ class Game extends State {
       nextPuddleIn = puddleCooldown;
     }
     nextPuddleIn -= 1;
+    this.test = new Sprite('tree', './img/test_t.png', 20, 20, testAnimations);
     return super.update(dt, keys);
   }
 
@@ -43,7 +58,12 @@ class Game extends State {
     r.isolatePath({
       fillStyle: COLORS.DIRT,
     }, () => {
-      r.fillRect(0, GROUND_LINE, r.width, r.height - GROUND_LINE);
+      r.fillRect(0, GROUND_LINE + GROUND_DEPTH, r.width, r.height - GROUND_LINE - GROUND_DEPTH);
+    });
+    r.isolatePath({
+      fillStyle: COLORS.PLANT,
+    }, () => {
+      r.fillRect(0, GROUND_LINE, r.width, GROUND_DEPTH);
     });
     puddles.forEach((puddle) => {
       r.isolatePath({
@@ -56,6 +76,10 @@ class Game extends State {
       fillStyle: COLORS.SKY,
     }, () => {
       r.fillRect(0, 0, r.width, GROUND_LINE);
+    });
+    this.test.draw(r.center.x-50, 0, {
+      width: 100,
+      height: 100,
     });
   }
 }
