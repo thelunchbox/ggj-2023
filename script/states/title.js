@@ -6,10 +6,10 @@ const Sprite = require('../utils/sprite');
 const testAnimations = {
   stand: {
     frames: [
-      [0, 0, 5],
+      [0, 0, 15],
       [0, 1, 5],
       [0, 2, 5],
-      [0, 1, 5],
+      [0, 1, 25],
     ],
     next: 'jump',
   },
@@ -17,8 +17,8 @@ const testAnimations = {
     frames: [
       [1, 0, 5],
       [1, 1, 5],
-      [1, 2, 5],
-      [1, 1, 5],
+      [1, 2, 15],
+      [1, 1, 25],
     ],
     next: 'slip',
   },
@@ -26,7 +26,7 @@ const testAnimations = {
     frames: [
       [2, 0, 5],
       [2, 1, 5],
-      [2, 2, 5],
+      [2, 2, 15],
       [2, 3, 5],
       [2, 4, 25],
     ],
@@ -35,10 +35,10 @@ const testAnimations = {
   letters: {
     frames: [
       [3, 0, 2],
-      [3, 1, 2],
+      [3, 1, 12],
       [3, 2, 2],
       [3, 3, 2],
-      [3, 4, 2],
+      [3, 4, 25],
     ],
     next: 'numbers',
   },
@@ -58,7 +58,7 @@ class Title extends State {
 
   constructor() {
     super();
-    this.test = new Sprite('test', './img/test.png', 20, 20, testAnimations);
+    this.test = new Sprite('test', './img/old_test.png', 20, 20, testAnimations);
   }
 
   update(dt, keys) {
@@ -71,7 +71,7 @@ class Title extends State {
 
   draw() {
     const r = getRenderer();
-    this.test.draw(10, 10, {
+    this.test.draw(r.center.x-50, 10, {
       width: 100,
       height: 100,
     });
@@ -84,9 +84,9 @@ class Title extends State {
       textAlign: 'center',
       textBaseline: 'middle',
     }, () => {
-      r.strokeAndFillText('Game Title', r.center.x, r.center.y);
+      r.strokeAndFillText('AHAHAHAHAHAHA!', r.center.x, r.center.y);
       r.isolatePath({ fontSize: 36 }, () => {
-        r.oscillateText('Press Any Key', r.center.x, r.center.y + 100, this.frame, { drag: 3, padding: 3 });
+        r.oscillateText('Press Any Key', r.center.x, r.center.y + 400, this.frame, { drag: 3, padding: 3 });
       });
     });
   }
