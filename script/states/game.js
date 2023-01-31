@@ -16,7 +16,7 @@ const testAnimations = {
   },
 };
 
-const GROUND_LINE = 70;
+const GROUND_LINE = 80;
 const GROUND_DEPTH = 20;
 const puddles = [];
 const MAX_PUDDLE_RADIUS = 50;
@@ -40,7 +40,7 @@ class Game extends State {
     });
 
     if (nextPuddleIn === 0 && puddles.length < MAX_PUDDLE_COUNT) {
-      const yBuffer = GROUND_LINE + MAX_PUDDLE_RADIUS + 5;
+      const yBuffer = GROUND_LINE + GROUND_DEPTH + MAX_PUDDLE_RADIUS + 5;
       puddles.push({
         x: Math.floor(Math.random() * r.width),
         y: Math.floor(Math.random() * (r.height - yBuffer)) + yBuffer,
