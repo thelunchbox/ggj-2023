@@ -40,7 +40,7 @@ class Game extends State {
       nextPuddleIn = puddleCooldown;
     }
     nextPuddleIn -= 1;    
-    this.player.update();
+    this.player.update(dt, keys);
     return super.update(dt, keys);
   }
 
