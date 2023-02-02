@@ -15,6 +15,15 @@ const DEG_2_RAD = 0.0174533;
 const ROOT_WANDER = 45;
 const ROOT_SPEED = 5;
 
+const KEYS = {
+  A: 65,
+  D: 68,
+  S: 83,
+  W: 87,
+  J: 74,
+  K: 75,
+};
+
 module.exports = {
   GROUND_LINE,
   GROUND_DEPTH,
@@ -27,4 +36,5 @@ module.exports = {
   DEG_2_RAD,
   ROOT_WANDER,
   ROOT_SPEED,
-}
+  KEYS,
+};
