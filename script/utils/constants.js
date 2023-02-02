@@ -10,7 +10,7 @@ const MAX_PUDDLE_RADIUS = 50;
 const MAX_PUDDLE_COUNT = 30;
 
 const ROOT_THICKNESS= 4;
-const CURSOR_SPEED = 10;
+const CURSOR_SPEED = 5;
 const DEG_2_RAD = 0.0174533;
 const ROOT_WANDER = 45;
 const ROOT_SPEED = 5;

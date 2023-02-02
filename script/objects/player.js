@@ -1,12 +1,14 @@
 const Sprite = require('../utils/sprite');
 const Root = require('./root');
-const { WINDOW_WIDTH, WINDOW_HEIGHT} = require('../utils/constants');
-const { CURSOR_SPEED } = require('../utils/constants');
 const {
+  CURSOR_SPEED,
   GROUND_LINE,
   GROUND_DEPTH,
   KEYS,
+  WINDOW_HEIGHT,
+  WINDOW_WIDTH,
 } = require('../utils/constants');
+const { distance } = require('../utils/calculation')
 
 const ROOT_COOLDOWN = 30;
 
@@ -46,9 +48,10 @@ class Player {
     this.roots = [];
     this.pendingRoot = null;
     this.rootCooldown = 0;
+    this.water = 0;
   }
 
-  update(dt, keys) {
+  update(dt, keys, puddles) {
     if (keys.includes(KEYS.A)) {
       // Move Left
       this.cursor.x -= CURSOR_SPEED;
@@ -93,6 +96,17 @@ class Player {
         this.roots.push(this.pendingRoot);
       }
     }
+
+    const rootTips = this.roots.filter(r => r.doneGrowing()).map(r => r.tip());
+    puddles.forEach(puddle => {
+      const puddleCenter = { x: puddle.x, y: puddle.y };
+      for (const tip of rootTips) {
+        if (distance(tip, puddleCenter) <= puddle.radius) {
+          puddle.drain();
+          this.water += 1;
+        }
+      }
+    });
 
     this.treeSprite.update();
     for (const root of this.roots) {

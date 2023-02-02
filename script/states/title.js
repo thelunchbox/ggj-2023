@@ -28,8 +28,8 @@ class Title extends State {
       textBaseline: 'middle',
     }, () => {
       r.strokeAndFillText('I AM GROOT!', r.center.x, r.center.y);
-      r.isolatePath({ fontSize: 26 }, () => {
-        r.oscillateText('Press Any Key', r.center.x, r.center.y + 200, this.frame, { drag: 3, padding: 3 });
+      r.isolatePath({ fontSize: 26, fillStyle: '#fff' }, () => {
+      r.fillText('WASD to move cursor, J to grow roots, K to set root origin (optional)', r.center.x, r.center.y + 150);
       });
     });
   }

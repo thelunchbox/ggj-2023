@@ -39,13 +39,21 @@ class Root {
     return [point, min];
   }
 
+  doneGrowing() {
+    return this.target && !this.active;
+  }
+
+  tip() {
+    return this.points[this.points.length - 1];
+  }
+
   update() {
     if (!this.active) return;
 
     if (this.points.length === 0) {
       this.points.push(this.start);
     }
-    const start = this.points[this.points.length - 1];
+    const start = this.tip();
     if (distance(start, this.target) > 10) {
       const targetAngle = angleInRadians(start, this.target)
       const wiggleAmount = DEG_2_RAD * Math.random() * ROOT_WANDER * (Math.round(Math.random()) ? 1 : -1); // random within ROOT_WANDER degrees of target.
