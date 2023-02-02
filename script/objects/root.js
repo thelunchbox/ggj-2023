@@ -17,13 +17,11 @@ class Root {
     this.points = [];
     this.target = target;
     this.active = target != null;
-    console.log('NEW ROOT', this);
   }
 
   setTarget(target) {
     this.target = target;
     this.active = true;
-    console.log('TARGET UPDATED', this);
   }
 
   findNearestPoint(target) {
@@ -64,6 +62,24 @@ class Root {
     } else {
       this.active = false;
     }
+  }
+
+  drawOutline(renderer) {
+    if (this.points.length < 2) {
+      return;
+    }
+
+    renderer.isolatePath({
+      strokeStyle: '#000',
+      lineWidth: ROOT_THICKNESS + 3,
+    }, () => {
+      const {x, y} = this.points[0];
+      renderer.moveTo(x, y);
+      for(const point of this.points) {
+        renderer.lineTo(point.x, point.y);
+      }
+      renderer.stroke();
+    });
   }
 
   draw(renderer) {

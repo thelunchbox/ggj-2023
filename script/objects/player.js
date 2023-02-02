@@ -122,6 +122,9 @@ class Player {
       height: 100,
     });
     for (const root of this.roots) {
+      root.drawOutline(renderer);
+    }
+    for (const root of this.roots) {
       root.draw(renderer);
     }
     this.cursorSprite.draw(this.cursor.x-32, this.cursor.y-32)
