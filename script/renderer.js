@@ -341,8 +341,8 @@ class Renderer {
 
 let renderer = null;
 
-function createRenderer(root) {
-  renderer = new Renderer(root);
+function createRenderer(root, options) {
+  renderer = new Renderer(root, options);
   return renderer;
 }
 

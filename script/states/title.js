@@ -19,7 +19,7 @@ class Title extends State {
   draw() {
     const r = getRenderer();
     r.isolatePath({
-      font: '72pt Arial',
+      font: '42pt Arial',
       fillStyle: COLORS.PLANT,
       strokeStyle: COLORS.DIRT,
       lineWidth: 10,
@@ -29,7 +29,7 @@ class Title extends State {
     }, () => {
       r.strokeAndFillText('I AM GROOT!', r.center.x, r.center.y);
       r.isolatePath({ fontSize: 26, fillStyle: '#fff' }, () => {
-      r.fillText('WASD to move cursor, J to grow roots, K to set root origin (optional)', r.center.x, r.center.y + 150);
+      r.drawParagraph('WASD to move cursor, J to grow roots, K to set root origin (optional)', r.center.x, r.center.y + 150, 400);
       });
     });
   }

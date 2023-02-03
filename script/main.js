@@ -3,6 +3,7 @@ const { getStartingState, getNextState } = require('./stateFactory');
 const { createRenderer } = require('./renderer');
 const electronWindow = remote.getCurrentWindow();
 const path = require('path');
+const { WINDOW_HEIGHT, WINDOW_WIDTH }=require('./utils/constants');
 
 const keys = [];
 window.addEventListener('keydown', ({ keyCode }) => {
@@ -34,7 +35,7 @@ window.addEventListener('keyup', ({ keyCode }) => {
   keys.splice(index, 1);
 });
 
-const renderer = createRenderer(document.body);
+const renderer = createRenderer(document.body, { height: WINDOW_HEIGHT, width: WINDOW_WIDTH });
 let state = getStartingState();
 
 // load any images - we could loop through the img folder if we needed to

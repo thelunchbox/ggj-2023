@@ -1,8 +1,5 @@
-
-// TODO: Get these values more intelligently
-const WINDOW_WIDTH = 1600;
+const WINDOW_WIDTH = 720;
 const WINDOW_HEIGHT = 900;
-// ///////////////////////
 
 const GROUND_LINE = 80;
 const GROUND_DEPTH = 20;
