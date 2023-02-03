@@ -51,6 +51,10 @@ class Player {
     this.water = 0;
   }
 
+  getTotalRootLength() {
+    return this.roots.reduce((agg, root) => agg + root.points.length, 0);
+  }
+
   update(dt, keys, puddles) {
     if (keys.includes(KEYS.A)) {
       // Move Left

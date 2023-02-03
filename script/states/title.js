@@ -29,7 +29,7 @@ class Title extends State {
     }, () => {
       r.strokeAndFillText('I AM GROOT!', r.center.x, r.center.y);
       r.isolatePath({ fontSize: 26, fillStyle: '#fff' }, () => {
-      r.drawParagraph('WASD to move cursor, J to grow roots, K to set root origin (optional)', r.center.x, r.center.y + 150, 400);
+        r.drawParagraph('WASD to move cursor, J to grow roots, K to set root origin (optional)', r.center.x, r.center.y + 150, 400);
       });
     });
   }

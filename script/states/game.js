@@ -9,7 +9,8 @@ const {
   GROUND_DEPTH,
   MAX_PUDDLE_RADIUS,
   MAX_PUDDLE_COUNT,
-} = require('../utils/constants')
+} = require('../utils/constants');
+const COLORS = require('../utils/colors');
 
 const PUDDLE_COOLDOWN = 300;
 
@@ -53,6 +54,26 @@ class Game extends State {
     }
 
     this.player.draw(r);
+
+    const rootLength = this.player.getTotalRootLength();
+    r.isolatePath({
+      fillStyle: COLORS.ROOT,
+      font: '14pt Arial',
+    }, () => {
+      r.fillText(`ROOTS: ${rootLength}`, 5, 25);
+    });
+    r.isolatePath({
+      fillStyle: COLORS.WATER,
+      font: '14pt Arial',
+    }, () => {
+      r.fillText(`WATER: ${this.player.water}`, 5, 45);
+    });
+    r.isolatePath({
+      fillStyle: COLORS.PLANT,
+      font: '14pt Arial',
+    }, () => {
+      r.fillText(`SCORE: ${this.player.water - rootLength}`, 5, 65);
+    });
   }
 }
 
