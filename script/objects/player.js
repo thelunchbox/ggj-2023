@@ -47,7 +47,7 @@ class Player {
     }
     this.roots = [];
     this.pendingRoot = null;
-    this.rootCooldown = 0;
+    this.rootCooldown = 10;
     this.water = 0;
   }
 
@@ -73,11 +73,18 @@ class Player {
     if (keys.includes(KEYS.J) && this.rootCooldown === 0) {
       const { x, y } = this.cursor;
       this.rootCooldown = ROOT_COOLDOWN;
-      if (!this.pendingRoot) {
-        this.pendingRoot = new Root({ x: WINDOW_WIDTH / 2, y: 100 }, { x, y });
-        this.roots.push(this.pendingRoot);
+      if (this.pendingRoot && y <= this.pendingRoot.start.y) {
+        console.error('roots cannot grow up');
+        const index = this.roots.indexOf(this.pendingRoot);
+        this.roots.splice(index, 1);
+        this.pendingRoot = null;
       } else {
-        this.pendingRoot.setTarget({ x, y });
+        if (!this.pendingRoot) {
+          this.pendingRoot = new Root({ x: WINDOW_WIDTH / 2, y: 100 }, { x, y });
+          this.roots.push(this.pendingRoot);
+        } else {
+          this.pendingRoot.setTarget({ x, y });
+        }
       }
       this.pendingRoot = null;
     }
