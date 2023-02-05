@@ -3,6 +3,7 @@ const WINDOW_HEIGHT = 900;
 
 const GROUND_LINE = 80;
 const GROUND_DEPTH = 20;
+const GROUND_LEFT_BOUND = 50;
 const MAX_PUDDLE_RADIUS = 50;
 const MAX_PUDDLE_COUNT = 30;
 
@@ -11,6 +12,10 @@ const CURSOR_SPEED = 5;
 const DEG_2_RAD = 0.0174533;
 const ROOT_WANDER = 45;
 const ROOT_SPEED = 5;
+
+const LEVEL_SCALE = 250;
+const WATER_DECAY = 0.1;
+const DEATH_SPEED = 0.3;
 
 const KEYS = {
   A: 65,
@@ -24,6 +29,7 @@ const KEYS = {
 module.exports = {
   GROUND_LINE,
   GROUND_DEPTH,
+  GROUND_LEFT_BOUND,
   MAX_PUDDLE_RADIUS,
   MAX_PUDDLE_COUNT,
   WINDOW_HEIGHT,
@@ -34,4 +40,7 @@ module.exports = {
   ROOT_WANDER,
   ROOT_SPEED,
   KEYS,
+  LEVEL_SCALE,
+  DEATH_SPEED,
+  WATER_DECAY,
 };
